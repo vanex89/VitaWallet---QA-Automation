@@ -1,24 +1,22 @@
-# Vita Wallet – QA Automation (Appium + Python)
+Vita Wallet – QA Automation (Appium + Python)
 
 Automatización **mobile Android** con **Appium + Python (PyTest)**. Caso principal: **Intercambio ARS → USDT**.
 Este README es la **única fuente** de instrucciones para ejecutar y evaluar la entrega.
 
-## Contenidos
+Contenidos
 - `pages/` Page Objects (POM)
 - `tests/` Pruebas PyTest
 - `evidencias/` Reporte HTML, Logcat, video, screenshots
 - `docs/` Documentación de referencia (consigna PDF y guías). *No hay otros READMEs duplicados.*
 
----
-
-## Requisitos
+Requisitos
 - **Windows 10/11**
 - **Android Studio** con SDK + Emulador (API 30+)
 - **Node.js** y **Appium 2** con **uiautomator2**
 - **Python 3.10+** y **venv**
 - Appium Server corriendo en `http://127.0.0.1:4723`
 
-### Instalación
+Instalación
 ```cmd
 npm i -g appium
 appium driver install uiautomator2
@@ -31,9 +29,7 @@ pip install -r requirements.txt
 appium
 ```
 
----
-
-## Ejecución (swap ARS → USDT)
+ Ejecución (swap ARS → USDT)
 ```cmd
 # Variables opcionales
 set VITA_PIN=123456
@@ -47,16 +43,14 @@ pytest -q -m swap --html=evidencias\report.html --self-contained-html
 ```
 > Exporta **Logcat** desde Android Studio (Logcat → `package:<package> level:V`) y guárdalo en `evidencias/logcat_app.txt`.
 
-### ¿Qué valida?
+¿Qué valida?
 - Login (si aplica) → **Cripto → Intercambiar**.
 - Monto **ARS** en fila superior.
 - Abrir selector **Hacia** (2ª fila), elegir **USDT** (tolerante a “USDT/Tether/USDt”).  
 - **Reaplicar monto** si la app lo resetea → **Continuar/Confirmar**.
 - Verificación liviana de ausencia de mensajes de error.
 
----
-
-## Estructura
+Estructura
 ```
 .
 ├─ pages/
@@ -78,18 +72,8 @@ pytest -q -m swap --html=evidencias\report.html --self-contained-html
 └─ README.md              # este archivo (único)
 ```
 
----
-
-## Notas técnicas
+Notas técnicas
 - POM: `pages/crypto_page.py` y `pages/login_page.py`.
 - Robustez de flujos (taps por texto/desc y por coordenadas, reintentos, `UiScrollable`).
 - Si cambia el layout, ajustar selectores con Appium Inspector.
 
----
-
-## Evidencias de evaluación
-- `evidencias/report.html` (pytest-html)
-- `evidencias/logcat_app.txt` (Logcat)
-- `evidencias/video/` (opcional)
-- `evidencias/screenshots/` (si los hubiera)
-```
