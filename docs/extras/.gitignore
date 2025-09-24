@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+app/*.apk
+evidencias/*.zip
+evidencias/*.mp4
+evidencias/*.mov
+evidencias/*.png
+evidencias/*.jpg
+evidencias/report.html
