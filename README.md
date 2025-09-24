@@ -1,0 +1,1 @@
+# VitaWallet---QA-Automation
